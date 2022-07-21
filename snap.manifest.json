@@ -1,0 +1,21 @@
+{
+  "version": "0.0.1",
+  "description": "none",
+  "proposedName": "mysnap",
+  "source": {
+    "shasum": "ViPNvO2ZFyVfyloEfp5feTkp9Jfn7F/NQIh5tK498rM=",
+    "location": {
+      "npm": {
+        "filePath": "out/bundle.js",
+        "packageName": "mysnap",
+        "registry": "https://registry.npmjs.org",
+        "iconPath": "images/icon.svg"
+      }
+    }
+  },
+  "initialPermissions": {
+    "snap_confirm": {},
+    "endowment:network-access": {}
+  },
+  "manifestVersion": "0.1"
+}
