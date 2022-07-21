@@ -3,7 +3,7 @@
   "description": "none",
   "proposedName": "mysnap",
   "source": {
-    "shasum": "ViPNvO2ZFyVfyloEfp5feTkp9Jfn7F/NQIh5tK498rM=",
+    "shasum": "GfPcONDWVibedjRu8VMIQiN7tgIWhQRWAjROp7PlQIg=",
     "location": {
       "npm": {
         "filePath": "out/bundle.js",
@@ -15,7 +15,8 @@
   },
   "initialPermissions": {
     "snap_confirm": {},
-    "endowment:network-access": {}
+    "endowment:network-access": {},
+    "snap_manageState": {}
   },
   "manifestVersion": "0.1"
 }

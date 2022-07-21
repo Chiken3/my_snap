@@ -5,22 +5,87 @@ module.exports.onRpcRequest = async ({
   origin,
   request
 }) => {
-  async function getFees() {
-    let response = await fetch('https://www.etherchain.org/api/gasPriceOracle');
-    return response.text();
+  
+  
+  
+  
+  let state = await wallet.request({
+    method: 'snap_manageState',
+    params: ['get']
+  });
+
+  if (!state) {
+    state = {
+      book: []
+    }; 
+
+    await wallet.request({
+      method: 'snap_manageState',
+      params: ['update', state]
+    });
   }
 
   switch (request.method) {
+    case 'storeAddress':
+      state.book.push({
+        name: request.nameToStore,
+        address: request.addressToStore
+      });
+      await wallet.request({
+        method: 'snap_manageState',
+        params: ['update', state]
+      });
+      return true;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    case 'retrieveAddresses':
+      return state.book;
+
     case 'hello':
-      const fees = await getFees();
+      let address_book = state.book.map(function (item) {
+        return `${item.name}: ${item.address}`;
+      }).join("\n");
       return wallet.request({
         method: 'snap_confirm',
         params: [{
           prompt: `Hello, ${origin}!`,
-          description: 'This custom confirmation is just for display purposes.',
-          textAreaContent: 'Current fee estimates: ' + fees
+          description: 'Address book:',
+          textAreaContent: address_book
         }]
       });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     default:
       throw new Error('Method not found.');
